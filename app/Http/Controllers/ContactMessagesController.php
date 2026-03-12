@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
 use App\Notifications\ContactFormDiscordNotification;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class ContactMessagesController extends Controller
 {
-    public function post(Request $request)
+    public function post(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name'    => ['required', 'string', 'max:255'],
-            'email'   => ['required', 'email', 'max:255'],
-            'phone'   => ['nullable', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:20'],
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
@@ -24,19 +25,16 @@ class ContactMessagesController extends Controller
             $message->email = $validated['email'];
             $message->phone = $validated['phone'] ?? '';
             $message->message = $validated['message'];
-            $message->photo_paths = $photoPaths;
-
+            $message->photo_paths = []; // or null, depending on your column type
             $message->save();
         } catch (\Throwable $e) {
             Log::error('Contact form save failed', [
                 'error' => $e->getMessage(),
             ]);
 
-
-
-            return response()->json([
-                'error' => 'Uh oh, something went wrong on our end - please give us a call at 978-877-9784',
-            ], 500);
+            return back()->withErrors([
+                'form' => 'Uh oh, something went wrong on our end. Please email me directly at kevin@kevinwhelandev.com.',
+            ]);
         }
 
         try {
@@ -47,9 +45,11 @@ class ContactMessagesController extends Controller
                 $message->message
             ))->toDiscord(null);
         } catch (\Throwable $e) {
-            Log::warning('Discord notification failed', ['error' => $e->getMessage()]);
+            Log::warning('Discord notification failed', [
+                'error' => $e->getMessage(),
+            ]);
         }
 
-        return response()->json(['status' => 'Message sent successfully!'], 200);
+        return back()->with('success', 'Message sent successfully!');
     }
 }
