@@ -9,6 +9,15 @@ import {
     faPlug,
     faScrewdriverWrench,
     faUserGear,
+    faLaptopCode,
+    faDiagramProject,
+    faWindowMaximize,
+    faCompassDrafting,
+    faListCheck,
+    faRocket,
+    faShieldHalved,
+    faServer,
+    faPalette,
 } from '@fortawesome/free-solid-svg-icons';
 import InputError from '@/components/InputError.vue';
 import heroPhoto from '@/assets/me.png';
@@ -32,6 +41,7 @@ const nav = [
 const techGroups = [
     {
         title: 'Backend',
+        icon: faServer,
         items: [
             'Laravel',
             'PHP',
@@ -43,6 +53,7 @@ const techGroups = [
     },
     {
         title: 'Frontend',
+        icon: faPalette,
         items: [
             'Vue 3',
             'React',
@@ -54,6 +65,7 @@ const techGroups = [
     },
     {
         title: 'Infrastructure',
+        icon: faShieldHalved,
         items: [
             'AWS',
             'Docker',
@@ -68,14 +80,17 @@ const techGroups = [
 const helpCards = [
     {
         title: 'Custom Software',
+        icon: faLaptopCode,
         text: 'Web applications, dashboards, internal tools, and practical systems built around how your business actually works.',
     },
     {
         title: 'APIs & Integrations',
+        icon: faDiagramProject,
         text: 'Backend services, third-party integrations, and reliable APIs that connect systems cleanly.',
     },
     {
         title: 'Business Websites',
+        icon: faWindowMaximize,
         text: 'Modern websites for businesses that need a stronger online presence, more trust, and more inbound leads.',
     },
 ];
@@ -116,26 +131,42 @@ const problemItems = [
 const processSteps = [
     {
         title: 'Understand the problem',
+        icon: faCompassDrafting,
         text: 'Start with the real business need, not just a list of features.',
     },
     {
         title: 'Define clear scope',
+        icon: faListCheck,
         text: 'Break the work into something realistic, prioritized, and easy to execute.',
     },
     {
         title: 'Build with steady updates',
+        icon: faCode,
         text: 'Move quickly, communicate clearly, and keep progress visible.',
     },
     {
         title: 'Deliver maintainable work',
+        icon: faRocket,
         text: 'Ship something solid that is easy to understand, extend, and support.',
     },
 ];
 
 const aboutStats = [
-    { label: 'Focus', value: 'Software that solves real problems' },
-    { label: 'Best fit', value: 'Apps, APIs, websites, improvements' },
-    { label: 'Style', value: 'Practical, thoughtful, low-friction' },
+    {
+        label: 'Focus',
+        value: 'Software that solves real problems',
+        icon: faCompassDrafting,
+    },
+    {
+        label: 'Best fit',
+        value: 'Apps, APIs, websites, improvements',
+        icon: faLayerGroup,
+    },
+    {
+        label: 'Style',
+        value: 'Practical, thoughtful, low-friction',
+        icon: faUserGear,
+    },
 ];
 
 const heroStyle = computed(() => ({
@@ -543,62 +574,75 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="services-title"
                 class="border-t border-white/5 bg-[#0A1320]"
             >
-                <div class="mx-auto max-w-6xl px-6 py-16">
-                    <div
-                        class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
-                    >
-                        <div class="max-w-3xl">
-                            <p
-                                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
-                            >
-                                <span
-                                    class="h-2 w-2 rounded-full"
-                                    :style="{ background: primary }"
-                                    aria-hidden="true"
-                                />
-                                What I do
-                            </p>
+                <div class="mx-auto max-w-6xl px-6 py-20">
+                    <div class="max-w-3xl">
+                        <p
+                            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
+                        >
+                            <span
+                                class="h-2 w-2 rounded-full"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            What I do
+                        </p>
 
-                            <h2
-                                id="services-title"
-                                class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
-                            >
-                                Practical software and website work for real
-                                business needs
-                            </h2>
+                        <h2
+                            id="services-title"
+                            class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+                        >
+                            Practical software and website work for real
+                            business needs
+                        </h2>
 
-                            <p
-                                class="mt-4 text-lg leading-relaxed text-white/80"
-                            >
-                                I help clients build, improve, and modernize the
-                                systems they rely on — with a focus on clear
-                                execution, maintainable code, and useful
-                                outcomes.
-                            </p>
-                        </div>
-
-                        <div class="text-sm text-white/70 sm:text-right">
-                            <p>Typical projects</p>
-                            <p class="mt-1 font-medium text-white/90">
-                                Build, improve, or modernize
-                            </p>
-                        </div>
+                        <p
+                            class="mt-4 text-lg leading-relaxed text-white/80"
+                        >
+                            I help clients build, improve, and modernize the
+                            systems they rely on — with a focus on clear
+                            execution, maintainable code, and useful outcomes.
+                        </p>
                     </div>
 
-                    <ul class="mt-10 grid gap-4 md:grid-cols-3" role="list">
-                        <li v-for="card in helpCards" :key="card.title">
-                            <article
-                                class="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-black/20"
-                            >
-                                <h3 class="text-lg font-semibold text-white">
+                    <div class="mt-10 grid gap-5 md:grid-cols-3">
+                        <article
+                            v-for="card in helpCards"
+                            :key="card.title"
+                            class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            <div
+                                class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                aria-hidden="true"
+                            />
+
+                            <div class="relative">
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+                                >
+                                    <FontAwesomeIcon
+                                        :icon="card.icon"
+                                        class="text-base"
+                                    />
+                                </div>
+
+                                <h3
+                                    class="mt-5 text-lg font-semibold text-white"
+                                >
                                     {{ card.title }}
                                 </h3>
-                                <p class="mt-3 text-sm leading-7 text-white/80">
+                                <p
+                                    class="mt-3 text-sm leading-7 text-white/78"
+                                >
                                     {{ card.text }}
                                 </p>
-                            </article>
-                        </li>
-                    </ul>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
 
@@ -636,90 +680,42 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                     </div>
 
                     <div class="mt-10 grid gap-5 md:grid-cols-2">
-                        <div class="flex flex-col gap-5 md:pt-0">
-                            <article
-                                v-for="item in problemItems.slice(0, 3)"
-                                :key="item.title"
-                                class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
-                            >
-                                <div
-                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
-                                    :style="{ background: primary }"
-                                    aria-hidden="true"
-                                />
-                                <div
-                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
-                                    aria-hidden="true"
-                                />
+    <article
+        v-for="item in problemItems"
+        :key="item.title"
+        class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+    >
+        <div
+            class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
+            :style="{ background: primary }"
+            aria-hidden="true"
+        />
+        <div
+            class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+            aria-hidden="true"
+        />
 
-                                <div class="relative flex items-start gap-4">
-                                    <div
-                                        class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
-                                    >
-                                        <FontAwesomeIcon
-                                            :icon="item.icon"
-                                            class="text-base"
-                                        />
-                                    </div>
+        <div class="relative flex items-start gap-4">
+            <div
+                class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+            >
+                <FontAwesomeIcon
+                    :icon="item.icon"
+                    class="text-base"
+                />
+            </div>
 
-                                    <div>
-                                        <h3
-                                            class="text-base font-semibold text-white"
-                                        >
-                                            {{ item.title }}
-                                        </h3>
-                                        <p
-                                            class="mt-2 text-sm leading-7 text-white/78"
-                                        >
-                                            {{ item.text }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="flex flex-col gap-5 md:pt-10">
-                            <article
-                                v-for="item in problemItems.slice(3, 6)"
-                                :key="item.title"
-                                class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
-                            >
-                                <div
-                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
-                                    :style="{ background: primary }"
-                                    aria-hidden="true"
-                                />
-                                <div
-                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
-                                    aria-hidden="true"
-                                />
-
-                                <div class="relative flex items-start gap-4">
-                                    <div
-                                        class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
-                                    >
-                                        <FontAwesomeIcon
-                                            :icon="item.icon"
-                                            class="text-base"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <h3
-                                            class="text-base font-semibold text-white"
-                                        >
-                                            {{ item.title }}
-                                        </h3>
-                                        <p
-                                            class="mt-2 text-sm leading-7 text-white/78"
-                                        >
-                                            {{ item.text }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+            <div>
+                <h3 class="text-base font-semibold text-white">
+                    {{ item.title }}
+                </h3>
+                <p class="mt-2 text-sm leading-7 text-white/78">
+                    {{ item.text }}
+                </p>
+            </div>
+        </div>
+    </article>
+</div>
                 </div>
             </section>
 
@@ -728,66 +724,89 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 class="border-t border-white/5 bg-[#0A1320]"
             >
                 <div class="mx-auto max-w-6xl px-6 py-20">
-                    <div
-                        class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
-                    >
-                        <div class="max-w-3xl">
-                            <p
-                                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
-                            >
-                                <span
-                                    class="h-2 w-2 rounded-full"
-                                    :style="{ background: primary }"
-                                    aria-hidden="true"
-                                />
-                                Process
-                            </p>
+                    <div class="max-w-3xl">
+                        <p
+                            class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
+                        >
+                            <span
+                                class="h-2 w-2 rounded-full"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            Process
+                        </p>
 
-                            <h2
-                                id="process-title"
-                                class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
-                            >
-                                How I Work
-                            </h2>
+                        <h2
+                            id="process-title"
+                            class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+                        >
+                            How I Work
+                        </h2>
 
-                            <p
-                                class="mt-4 text-lg leading-relaxed text-white/80"
-                            >
-                                Clear scope, steady communication, and work
-                                that’s designed to be useful long after launch.
-                            </p>
-                        </div>
-
-                        <div class="text-sm text-white/70 sm:text-right">
-                            <p>Response time</p>
-                            <p class="mt-1 font-medium text-white/90">
-                                Within 1 business day
-                            </p>
-                        </div>
+                        <p
+                            class="mt-4 text-lg leading-relaxed text-white/80"
+                        >
+                            Clear scope, steady communication, and work that’s
+                            designed to be useful long after launch.
+                        </p>
                     </div>
 
-                    <ol class="mt-10 grid gap-4 md:grid-cols-4">
-                        <li
+                    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                        <article
                             v-for="(step, index) in processSteps"
                             :key="step.title"
+                            class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+                            :class="{
+                                'xl:mt-0': index === 0,
+                                'xl:mt-6': index === 1,
+                                'xl:mt-12': index === 2,
+                                'xl:mt-6': index === 3,
+                            }"
                         >
-                            <article
-                                class="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-black/20"
-                            >
-                                <p class="text-sm text-white/70">
-                                    {{ index + 1 }}. {{ step.title }}
-                                </p>
+                            <div
+                                class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            <div
+                                class="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                aria-hidden="true"
+                            />
+
+                            <div class="relative">
+                                <div
+                                    class="flex items-center justify-between gap-4"
+                                >
+                                    <div
+                                        class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+                                    >
+                                        <FontAwesomeIcon
+                                            :icon="step.icon"
+                                            class="text-base"
+                                        />
+                                    </div>
+
+                                    <span class="text-sm text-white/45">
+                                        0{{ index + 1 }}
+                                    </span>
+                                </div>
+
+                                <h3
+                                    class="mt-5 text-base font-semibold text-white"
+                                >
+                                    {{ step.title }}
+                                </h3>
                                 <p
-                                    class="mt-3 text-sm leading-relaxed font-medium text-white/90"
+                                    class="mt-3 text-sm leading-7 text-white/78"
                                 >
                                     {{ step.text }}
                                 </p>
-                            </article>
-                        </li>
-                    </ol>
+                            </div>
+                        </article>
+                    </div>
 
                     <div
-                        class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                        class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
                     >
                         <a
                             href="#contact"
@@ -869,32 +888,46 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         class="md:col-span-5"
                         aria-labelledby="at-a-glance-title"
                     >
-                        <div
-                            class="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-black/20"
-                        >
+                        <div class="space-y-4">
                             <h3
                                 id="at-a-glance-title"
-                                class="font-semibold text-white"
+                                class="text-lg font-semibold text-white"
                             >
                                 At a glance
                             </h3>
 
-                            <dl class="mt-5 space-y-3">
+                            <article
+                                v-for="stat in aboutStats"
+                                :key="stat.label"
+                                class="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-xl hover:shadow-black/20"
+                            >
                                 <div
-                                    v-for="stat in aboutStats"
-                                    :key="stat.label"
-                                    class="rounded-xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-black/30 hover:shadow-xl hover:shadow-black/20"
-                                >
-                                    <dt class="text-sm text-white/70">
-                                        {{ stat.label }}
-                                    </dt>
-                                    <dd
-                                        class="mt-2 text-sm font-medium text-white/90"
+                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.5rem]"
+                                    :style="{ background: primary }"
+                                    aria-hidden="true"
+                                />
+                                <div class="relative flex items-start gap-4">
+                                    <div
+                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
                                     >
-                                        {{ stat.value }}
-                                    </dd>
+                                        <FontAwesomeIcon
+                                            :icon="stat.icon"
+                                            class="text-sm"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <dt class="text-sm text-white/65">
+                                            {{ stat.label }}
+                                        </dt>
+                                        <dd
+                                            class="mt-1 text-sm font-medium leading-relaxed text-white/92"
+                                        >
+                                            {{ stat.value }}
+                                        </dd>
+                                    </div>
                                 </div>
-                            </dl>
+                            </article>
                         </div>
                     </aside>
                 </div>
@@ -921,7 +954,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="tech-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Tools I work with
+                            Tools I Work With
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
@@ -932,15 +965,36 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </p>
                     </div>
 
-                    <ul class="mt-10 grid gap-4 md:grid-cols-3" role="list">
-                        <li v-for="group in techGroups" :key="group.title">
-                            <section
-                                class="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-black/20"
-                                :aria-labelledby="`tech-${group.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`"
-                            >
+                    <div class="mt-10 grid gap-5 md:grid-cols-3">
+                        <section
+                            v-for="group in techGroups"
+                            :key="group.title"
+                            class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+                            :aria-labelledby="`tech-${group.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            <div
+                                class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                aria-hidden="true"
+                            />
+
+                            <div class="relative">
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+                                >
+                                    <FontAwesomeIcon
+                                        :icon="group.icon"
+                                        class="text-base"
+                                    />
+                                </div>
+
                                 <h3
                                     :id="`tech-${group.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`"
-                                    class="font-semibold text-white"
+                                    class="mt-5 text-lg font-semibold text-white"
                                 >
                                     {{ group.title }}
                                 </h3>
@@ -949,7 +1003,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     class="mt-5 flex flex-wrap gap-2"
                                     role="list"
                                 >
-                                    <li v-for="item in group.items" :key="item">
+                                    <li
+                                        v-for="item in group.items"
+                                        :key="item"
+                                    >
                                         <span
                                             class="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-sm text-white/85 transition duration-300 hover:border-white/20 hover:bg-black/30"
                                         >
@@ -957,9 +1014,9 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                         </span>
                                     </li>
                                 </ul>
-                            </section>
-                        </li>
-                    </ul>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </section>
 
@@ -971,58 +1028,88 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="grid gap-10 md:grid-cols-12">
                         <div class="md:col-span-5">
-                            <p
-                                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
+                            <div
+                                class="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur"
                             >
-                                <span
-                                    class="h-2 w-2 rounded-full"
+                                <div
+                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
                                     :style="{ background: primary }"
                                     aria-hidden="true"
-                                ></span>
-                                Contact
-                            </p>
+                                />
+                                <div
+                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
+                                    aria-hidden="true"
+                                />
 
-                            <h2
-                                id="contact-title"
-                                class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
-                            >
-                                Let’s talk about your project
-                            </h2>
-
-                            <p
-                                class="mt-4 max-w-xl text-lg leading-relaxed text-white/80"
-                            >
-                                Whether you need a custom app, API work,
-                                improvements to an existing product, or a better
-                                business website, send me a note and I’ll get
-                                back to you.
-                            </p>
-
-                            <div class="mt-8 space-y-3 text-sm text-white/80">
-                                <p>
-                                    Email:
-                                    <a
-                                        :href="`mailto:${contactEmail}`"
-                                        class="rounded underline transition hover:text-white focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
+                                <div class="relative">
+                                    <p
+                                        class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
                                     >
-                                        {{ contactEmail }}
-                                    </a>
-                                </p>
-                                <p>Response time: Within 1 business day</p>
+                                        <span
+                                            class="h-2 w-2 rounded-full"
+                                            :style="{ background: primary }"
+                                            aria-hidden="true"
+                                        ></span>
+                                        Contact
+                                    </p>
+
+                                    <h2
+                                        id="contact-title"
+                                        class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+                                    >
+                                        Let’s Talk About Your Project
+                                    </h2>
+
+                                    <p
+                                        class="mt-4 max-w-xl text-lg leading-relaxed text-white/80"
+                                    >
+                                        Whether you need a custom app, API work,
+                                        improvements to an existing product, or
+                                        a better business website, send me a
+                                        note and I’ll get back to you.
+                                    </p>
+
+                                    <div
+                                        class="mt-8 space-y-3 text-sm text-white/80"
+                                    >
+                                        <p>
+                                            Email:
+                                            <a
+                                                :href="`mailto:${contactEmail}`"
+                                                class="rounded underline transition hover:text-white focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
+                                            >
+                                                {{ contactEmail }}
+                                            </a>
+                                        </p>
+                                        <p>
+                                            Response time: Within 1 business day
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="md:col-span-7">
                             <div
-                                class="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-black/20"
+                                class="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
                             >
+                                <div
+                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
+                                    :style="{ background: primary }"
+                                    aria-hidden="true"
+                                />
+                                <div
+                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
+                                    aria-hidden="true"
+                                />
+
                                 <Form
                                     action="/contact"
                                     method="post"
                                     reset-on-success
                                     :options="{ preserveScroll: true }"
                                     v-slot="{ errors, processing }"
-                                    class="grid gap-4"
+                                    class="relative grid gap-4"
                                 >
                                     <div class="grid gap-4 sm:grid-cols-2">
                                         <div>
