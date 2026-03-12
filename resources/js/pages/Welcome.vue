@@ -624,7 +624,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="problems-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Problems I solve
+                            Problems I Solve
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
@@ -747,7 +747,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 id="process-title"
                                 class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                             >
-                                How I work
+                                How I Work
                             </h2>
 
                             <p
