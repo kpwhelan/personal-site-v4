@@ -269,10 +269,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
         <meta name="description" :content="pageDescription" />
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta name="author" content="Kevin Whelan" />
-        <meta
-            name="keywords"
-            content="Kevin Whelan, Laravel developer, full stack engineer, Vue developer, React developer, TypeScript developer, API development, custom software developer, business website developer"
-        />
         <link rel="canonical" :href="siteUrl" />
 
         <meta property="og:type" content="website" />
