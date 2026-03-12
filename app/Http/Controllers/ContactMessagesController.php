@@ -57,6 +57,6 @@ class ContactMessagesController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Message sent successfully!');
+        return back()->with('success', 'Thanks — your message was sent successfully.');
     }
 }

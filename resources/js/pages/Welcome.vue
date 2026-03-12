@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
+import { Form, Head, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import InputError from '@/components/InputError.vue';
 import heroPhoto from '@/assets/me.png';
+import InputError from '@/components/InputError.vue';
 
 const siteUrl = 'https://kevinwhelandev.com';
 const siteName = 'Kevin Whelan';
@@ -12,6 +12,16 @@ const pageDescription =
     'Senior full stack engineer building custom software, APIs, internal tools, and modern business websites with Laravel, Vue, React, TypeScript, and AWS.';
 const contactEmail = 'kevin@kevinwhelandev.com';
 const pageImage = `${siteUrl}/images/og-home.jpg`;
+
+const page = usePage();
+
+const flashSuccess = computed(
+    () => page.props.flash?.success as string | undefined
+);
+
+const flashError = computed(
+    () => page.props.flash?.error as string | undefined
+);
 
 const nav = [
     { label: 'What I Do', href: '#services' },
@@ -912,7 +922,8 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     action="/contact"
                                     method="post"
                                     reset-on-success
-                                    v-slot="{ errors, processing, wasSuccessful }"
+                                    :options="{ preserveScroll: true }"
+                                    v-slot="{ errors, processing }"
                                     class="grid gap-4"
                                 >
                                     <div class="grid gap-4 sm:grid-cols-2">
@@ -1017,48 +1028,52 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     </div>
 
                                     <div class="pt-2">
-                                        <button
-                                            type="submit"
-                                            :disabled="processing"
-                                            class="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
-                                            :style="{ background: primary }"
-                                        >
-                                            <svg
-                                                v-if="processing"
-                                                class="mr-2 h-4 w-4 animate-spin"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                aria-hidden="true"
-                                            >
-                                                <circle
-                                                    class="opacity-25"
-                                                    cx="12"
-                                                    cy="12"
-                                                    r="10"
-                                                    stroke="currentColor"
-                                                    stroke-width="4"
-                                                />
-                                                <path
-                                                    class="opacity-90"
-                                                    fill="currentColor"
-                                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                                                />
-                                            </svg>
-                                            {{
-                                                processing
-                                                    ? 'Sending...'
-                                                    : 'Send message'
-                                            }}
-                                        </button>
+    <button
+        type="submit"
+        :disabled="processing"
+        class="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+        :style="{ background: primary }"
+    >
+        <svg
+            v-if="processing"
+            class="mr-2 h-4 w-4 animate-spin"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+        >
+            <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+            />
+            <path
+                class="opacity-90"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            />
+        </svg>
+        {{ processing ? 'Sending...' : 'Send message' }}
+    </button>
 
-                                        <p
-                                            v-if="wasSuccessful"
-                                            class="mt-3 text-sm text-emerald-300"
-                                        >
-                                            Thanks — your message was sent
-                                            successfully.
-                                        </p>
-                                    </div>
+    <InputError :message="errors.form" class="mt-3" />
+
+    <p
+        v-if="flashSuccess"
+        class="mt-3 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
+    >
+        {{ flashSuccess }}
+    </p>
+
+    <p
+        v-if="flashError"
+        class="mt-3 rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200"
+    >
+        {{ flashError }}
+    </p>
+</div>
                                 </Form>
                             </div>
                         </div>
