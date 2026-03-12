@@ -1,8 +1,17 @@
 <script setup lang="ts">
 import { Form, Head, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import heroPhoto from '@/assets/me.png';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faCode,
+    faGlobe,
+    faLayerGroup,
+    faPlug,
+    faScrewdriverWrench,
+    faUserGear,
+} from '@fortawesome/free-solid-svg-icons';
 import InputError from '@/components/InputError.vue';
+import heroPhoto from '@/assets/me.png';
 
 const siteUrl = 'https://kevinwhelandev.com';
 const siteName = 'Kevin Whelan';
@@ -12,16 +21,6 @@ const pageDescription =
     'Senior full stack engineer building custom software, APIs, internal tools, and modern business websites with Laravel, Vue, React, TypeScript, and AWS.';
 const contactEmail = 'kevin@kevinwhelandev.com';
 const pageImage = `${siteUrl}/images/og-home.jpg`;
-
-const page = usePage();
-
-const flashSuccess = computed(
-    () => page.props.flash?.success as string | undefined
-);
-
-const flashError = computed(
-    () => page.props.flash?.error as string | undefined
-);
 
 const nav = [
     { label: 'What I Do', href: '#services' },
@@ -82,12 +81,36 @@ const helpCards = [
 ];
 
 const problemItems = [
-    'You need a custom app or internal tool, but not the overhead of a large agency.',
-    'You already have a Laravel or Vue app and need help improving, extending, or stabilizing it.',
-    'Your team needs APIs or integrations to connect systems and reduce manual work.',
-    'Your website feels outdated, slow, or unclear and is not doing a good job representing your business.',
-    'You need someone who can work independently, communicate clearly, and ship thoughtful work without a lot of noise.',
-    'You want maintainable code and practical execution, not over-engineering.',
+    {
+        icon: faScrewdriverWrench,
+        title: 'Custom apps without agency overhead',
+        text: 'You need a custom app or internal tool, but not the overhead of a large agency.',
+    },
+    {
+        icon: faCode,
+        title: 'Improve an existing Laravel or Vue app',
+        text: 'You already have a Laravel or Vue app and need help improving, extending, or stabilizing it.',
+    },
+    {
+        icon: faPlug,
+        title: 'Connect systems and reduce manual work',
+        text: 'Your team needs APIs or integrations to connect systems and reduce manual work.',
+    },
+    {
+        icon: faGlobe,
+        title: 'Modernize an outdated website',
+        text: 'Your website feels outdated, slow, or unclear and is not doing a good job representing your business.',
+    },
+    {
+        icon: faUserGear,
+        title: 'Work directly with someone reliable',
+        text: 'You need someone who can work independently, communicate clearly, and ship thoughtful work without a lot of noise.',
+    },
+    {
+        icon: faLayerGroup,
+        title: 'Keep the code practical and maintainable',
+        text: 'You want maintainable code and practical execution, not over-engineering.',
+    },
 ];
 
 const processSteps = [
@@ -130,6 +153,16 @@ const primaryHover = '#2563EB';
 
 const hoveringPrimary = ref(false);
 const mobileMenuOpen = ref(false);
+
+const page = usePage();
+
+const flashSuccess = computed(
+    () => page.props.flash?.success as string | undefined,
+);
+
+const flashError = computed(
+    () => page.props.flash?.error as string | undefined,
+);
 
 const structuredData = computed(() => ({
     '@context': 'https://schema.org',
@@ -602,26 +635,91 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </p>
                     </div>
 
-                    <ul class="mt-10 grid gap-4 md:grid-cols-2" role="list">
-                        <li v-for="item in problemItems" :key="item">
+                    <div class="mt-10 grid gap-5 md:grid-cols-2">
+                        <div class="flex flex-col gap-5 md:pt-0">
                             <article
-                                class="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-black/20"
+                                v-for="item in problemItems.slice(0, 3)"
+                                :key="item.title"
+                                class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
                             >
-                                <div class="flex items-start gap-3">
-                                    <span
-                                        class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
-                                        :style="{ background: primary }"
-                                        aria-hidden="true"
-                                    />
-                                    <p
-                                        class="text-sm leading-relaxed text-white/85"
+                                <div
+                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
+                                    :style="{ background: primary }"
+                                    aria-hidden="true"
+                                />
+                                <div
+                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                    aria-hidden="true"
+                                />
+
+                                <div class="relative flex items-start gap-4">
+                                    <div
+                                        class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
                                     >
-                                        {{ item }}
-                                    </p>
+                                        <FontAwesomeIcon
+                                            :icon="item.icon"
+                                            class="text-base"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3
+                                            class="text-base font-semibold text-white"
+                                        >
+                                            {{ item.title }}
+                                        </h3>
+                                        <p
+                                            class="mt-2 text-sm leading-7 text-white/78"
+                                        >
+                                            {{ item.text }}
+                                        </p>
+                                    </div>
                                 </div>
                             </article>
-                        </li>
-                    </ul>
+                        </div>
+
+                        <div class="flex flex-col gap-5 md:pt-10">
+                            <article
+                                v-for="item in problemItems.slice(3, 6)"
+                                :key="item.title"
+                                class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+                            >
+                                <div
+                                    class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
+                                    :style="{ background: primary }"
+                                    aria-hidden="true"
+                                />
+                                <div
+                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                    aria-hidden="true"
+                                />
+
+                                <div class="relative flex items-start gap-4">
+                                    <div
+                                        class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+                                    >
+                                        <FontAwesomeIcon
+                                            :icon="item.icon"
+                                            class="text-base"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3
+                                            class="text-base font-semibold text-white"
+                                        >
+                                            {{ item.title }}
+                                        </h3>
+                                        <p
+                                            class="mt-2 text-sm leading-7 text-white/78"
+                                        >
+                                            {{ item.text }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -1028,52 +1126,59 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     </div>
 
                                     <div class="pt-2">
-    <button
-        type="submit"
-        :disabled="processing"
-        class="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
-        :style="{ background: primary }"
-    >
-        <svg
-            v-if="processing"
-            class="mr-2 h-4 w-4 animate-spin"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-        >
-            <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-            />
-            <path
-                class="opacity-90"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-            />
-        </svg>
-        {{ processing ? 'Sending...' : 'Send message' }}
-    </button>
+                                        <button
+                                            type="submit"
+                                            :disabled="processing"
+                                            class="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                                            :style="{ background: primary }"
+                                        >
+                                            <svg
+                                                v-if="processing"
+                                                class="mr-2 h-4 w-4 animate-spin"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                aria-hidden="true"
+                                            >
+                                                <circle
+                                                    class="opacity-25"
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="10"
+                                                    stroke="currentColor"
+                                                    stroke-width="4"
+                                                />
+                                                <path
+                                                    class="opacity-90"
+                                                    fill="currentColor"
+                                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                                />
+                                            </svg>
+                                            {{
+                                                processing
+                                                    ? 'Sending...'
+                                                    : 'Send message'
+                                            }}
+                                        </button>
 
-    <InputError :message="errors.form" class="mt-3" />
+                                        <InputError
+                                            :message="errors.form"
+                                            class="mt-3"
+                                        />
 
-    <p
-        v-if="flashSuccess"
-        class="mt-3 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
-    >
-        {{ flashSuccess }}
-    </p>
+                                        <p
+                                            v-if="flashSuccess"
+                                            class="mt-3 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
+                                        >
+                                            {{ flashSuccess }}
+                                        </p>
 
-    <p
-        v-if="flashError"
-        class="mt-3 rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200"
-    >
-        {{ flashError }}
-    </p>
-</div>
+                                        <p
+                                            v-if="flashError"
+                                            class="mt-3 rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200"
+                                        >
+                                            {{ flashError }}
+                                        </p>
+                                    </div>
                                 </Form>
                             </div>
                         </div>
