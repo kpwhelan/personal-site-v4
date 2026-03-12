@@ -25,9 +25,9 @@ import heroPhoto from '@/assets/me.png';
 const siteUrl = 'https://kevinwhelandev.com';
 const siteName = 'Kevin Whelan';
 const pageTitle =
-    'Kevin Whelan | Senior Full Stack Engineer for Custom Software, APIs, and Business Websites';
+    'Kevin Whelan | Freelance Senior Full Stack Engineer for Laravel, APIs, and Business Websites';
 const pageDescription =
-    'Senior full stack engineer building custom software, APIs, internal tools, and modern business websites with Laravel, Vue, React, TypeScript, and AWS.';
+    'Freelance senior full stack engineer helping startups, small teams, and businesses build custom web applications, Laravel APIs, internal tools, integrations, and modern websites with Laravel, Vue, React, TypeScript, and AWS.';
 const contactEmail = 'kevin@kevinwhelandev.com';
 const pageImage = `${siteUrl}/images/og-home.jpg`;
 
@@ -79,92 +79,92 @@ const techGroups = [
 
 const helpCards = [
     {
-        title: 'Custom Software',
+        title: 'Custom Web Applications',
         icon: faLaptopCode,
-        text: 'Web applications, dashboards, internal tools, and practical systems built around how your business actually works.',
+        text: 'Custom software, dashboards, portals, and internal tools built around real workflows for startups, small teams, and established businesses.',
     },
     {
         title: 'APIs & Integrations',
         icon: faDiagramProject,
-        text: 'Backend services, third-party integrations, and reliable APIs that connect systems cleanly.',
+        text: 'Laravel APIs, backend services, and third-party integrations that connect your systems, reduce manual work, and make operations more reliable.',
     },
     {
         title: 'Business Websites',
         icon: faWindowMaximize,
-        text: 'Modern websites for businesses that need a stronger online presence, more trust, and more inbound leads.',
+        text: 'Modern business websites that build trust, clearly explain what you do, and turn more visitors into qualified leads.',
     },
 ];
 
 const problemItems = [
     {
         icon: faScrewdriverWrench,
-        title: 'Custom apps without agency overhead',
-        text: 'You need a custom app or internal tool, but not the overhead of a large agency.',
+        title: 'Build custom software without agency overhead',
+        text: 'You need a custom app, internal tool, or business system, but do not want the cost, layers, or friction of working with a large agency.',
     },
     {
         icon: faCode,
-        title: 'Improve an existing Laravel or Vue app',
-        text: 'You already have a Laravel or Vue app and need help improving, extending, or stabilizing it.',
+        title: 'Improve or extend an existing Laravel, Vue, or React app',
+        text: 'You already have an application in place and need a senior engineer to improve performance, add features, clean up the codebase, or stabilize delivery.',
     },
     {
         icon: faPlug,
         title: 'Connect systems and reduce manual work',
-        text: 'Your team needs APIs or integrations to connect systems and reduce manual work.',
+        text: 'Your business relies on multiple tools, spreadsheets, or disconnected processes and needs API integrations or automation to save time.',
     },
     {
         icon: faGlobe,
-        title: 'Modernize an outdated website',
-        text: 'Your website feels outdated, slow, or unclear and is not doing a good job representing your business.',
+        title: 'Replace an outdated or underperforming website',
+        text: 'Your website feels dated, unclear, slow, or does not reflect the quality of your business, making it harder to earn trust and generate leads.',
     },
     {
         icon: faUserGear,
         title: 'Work directly with someone reliable',
-        text: 'You need someone who can work independently, communicate clearly, and ship thoughtful work without a lot of noise.',
+        text: 'You want to work directly with a developer who communicates clearly, understands business needs, and can take ownership without a lot of noise.',
     },
     {
         icon: faLayerGroup,
-        title: 'Keep the code practical and maintainable',
-        text: 'You want maintainable code and practical execution, not over-engineering.',
+        title: 'Keep the solution practical and maintainable',
+        text: 'You want clean, maintainable code and thoughtful architecture that supports long-term growth without unnecessary complexity.',
     },
 ];
 
 const processSteps = [
     {
-        title: 'Understand the problem',
+        title: 'Understand the business problem',
         icon: faCompassDrafting,
-        text: 'Start with the real business need, not just a list of features.',
+        text: 'Start with what is actually slowing the business down or creating friction, not just a feature list.',
     },
     {
-        title: 'Define clear scope',
+        title: 'Define clear, realistic scope',
         icon: faListCheck,
-        text: 'Break the work into something realistic, prioritized, and easy to execute.',
+        text: 'Break the work into something practical, prioritized, and easy to execute so there is less confusion and more momentum.',
     },
     {
-        title: 'Build with steady updates',
+        title: 'Build with steady communication',
         icon: faCode,
-        text: 'Move quickly, communicate clearly, and keep progress visible.',
+        text: 'Move quickly, share progress consistently, and keep the work visible so there are no surprises.',
     },
     {
-        title: 'Deliver maintainable work',
+        title: 'Deliver maintainable software',
         icon: faRocket,
-        text: 'Ship something solid that is easy to understand, extend, and support.',
+        text: 'Ship something solid, understandable, and easy to support, extend, and improve over time.',
     },
 ];
 
 const aboutStats = [
     {
         label: 'Focus',
-        value: 'Software that solves real problems',
+        value: 'Custom software, APIs, internal tools, and business websites',
         icon: faCompassDrafting,
     },
     {
         label: 'Best fit',
-        value: 'Apps, APIs, websites, improvements',
+        value: 'Startups, small teams, and businesses that need practical execution',
         icon: faLayerGroup,
     },
     {
         label: 'Style',
-        value: 'Practical, thoughtful, low-friction',
+        value: 'Clear communication, thoughtful builds, low-friction collaboration',
         icon: faUserGear,
     },
 ];
@@ -215,6 +215,8 @@ const structuredData = computed(() => ({
                 'API Development',
                 'Business Websites',
                 'Custom Software Development',
+                'Internal Tools',
+                'Web Application Development',
             ],
         },
         {
@@ -243,12 +245,15 @@ const structuredData = computed(() => ({
             name: 'Kevin Whelan',
             url: siteUrl,
             description:
-                'Custom software development, API development, and modern business website services.',
+                'Freelance full stack development services including custom software development, API development, internal tools, integrations, and modern business websites.',
             areaServed: 'United States',
             serviceType: [
                 'Custom Software Development',
+                'Web Application Development',
                 'API Development',
                 'Business Website Development',
+                'Internal Tool Development',
+                'Software Integrations',
             ],
             provider: {
                 '@type': 'Person',
@@ -384,9 +389,9 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 </nav>
 
                 <section
-                    class="mt-12 grid items-center gap-10 md:grid-cols-12 lg:gap-14"
-                    aria-labelledby="home-hero-title"
-                >
+    class="mt-12 grid items-start gap-10 md:grid-cols-12 lg:gap-14"
+    aria-labelledby="home-hero-title"
+>
                     <div class="order-2 md:order-1 md:col-span-7">
                         <div class="max-w-3xl">
                             <p
@@ -397,29 +402,29 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     :style="{ background: primary }"
                                     aria-hidden="true"
                                 />
-                                Senior Full Stack Engineer • Laravel • Vue •
-                                React • APIs • AWS
+                                Freelance Senior Full Stack Engineer • Laravel • Vue • React • APIs • AWS
                             </p>
 
                             <h1
                                 id="home-hero-title"
                                 class="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]"
                             >
-                                Custom software, APIs, and modern websites
+                                Custom software, APIs, and modern business websites
                                 <span class="block text-white/72">
-                                    Built by a senior engineer who works
-                                    directly with you
+                                    Built by a senior engineer who works directly with you
                                 </span>
                             </h1>
 
                             <p
                                 class="mt-7 max-w-3xl text-xl leading-8 text-white/88 sm:text-[1.35rem]"
                             >
-                                I help startups, small teams, and local
-                                businesses build custom software, APIs, internal
-                                tools, and modern websites that are clear,
-                                maintainable, and grounded in real business
-                                needs.
+                                I help startups, small teams, and businesses build custom web applications, Laravel APIs, internal tools, software integrations, and modern websites that are clear, maintainable, and grounded in real business needs.
+                            </p>
+
+                            <p
+                                class="mt-4 max-w-3xl text-base leading-7 text-white/72 sm:text-lg"
+                            >
+                                Best fit for teams that need a freelance Laravel developer, full stack engineer, or technical partner who can design, build, improve, and ship practical software without unnecessary complexity.
                             </p>
 
                             <div class="mt-9 flex flex-wrap gap-3">
@@ -455,8 +460,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-2 text-sm leading-relaxed font-medium text-white/92"
                                     >
-                                        Custom apps, internal tools, APIs, and
-                                        business websites
+                                        Custom apps, internal tools, APIs, and business websites
                                     </p>
                                 </div>
 
@@ -469,8 +473,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-2 text-sm leading-relaxed font-medium text-white/92"
                                     >
-                                        Clear communication, thoughtful
-                                        execution, low friction
+                                        Clear communication, thoughtful execution, low friction
                                     </p>
                                 </div>
 
@@ -509,7 +512,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 <div class="aspect-[2/3] w-full">
                                     <img
                                         :src="heroPhoto"
-                                        alt="Kevin Whelan, senior full stack engineer"
+                                        alt="Kevin Whelan, freelance senior full stack engineer"
                                         class="h-full w-full object-cover object-center brightness-[1.08] contrast-[1.04] saturate-[1.02]"
                                         loading="eager"
                                         fetchpriority="high"
@@ -547,13 +550,11 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                         <p
                                             class="mt-3 text-base leading-snug font-semibold text-white sm:text-lg"
                                         >
-                                            Thoughtful builds for products,
-                                            platforms, and growing businesses
+                                            Thoughtful builds for products, platforms, and growing businesses
                                         </p>
 
                                         <p class="mt-1 text-sm text-white/85">
-                                            Startups • small teams • local
-                                            businesses
+                                            Startups • small teams • businesses
                                         </p>
                                     </div>
                                 </div>
@@ -587,16 +588,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="services-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Practical software and website work for real
-                            business needs
+                            Practical software and website work for real business needs
                         </h2>
 
                         <p
                             class="mt-4 text-lg leading-relaxed text-white/80"
                         >
-                            I help clients build, improve, and modernize the
-                            systems they rely on — with a focus on clear
-                            execution, maintainable code, and useful outcomes.
+                            I help clients plan, build, improve, and modernize custom software, web applications, APIs, internal tools, and business websites with a focus on clear execution, maintainable code, and useful outcomes.
                         </p>
                     </div>
 
@@ -668,50 +666,47 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
-                            Clients usually come to me because something needs
-                            to be built, fixed, improved, or made easier to
-                            maintain. These are the kinds of problems I commonly
-                            help with.
+                            Most clients come to me because something important needs to be built, fixed, improved, modernized, or made easier to maintain. These are the kinds of software and website problems I commonly help solve.
                         </p>
                     </div>
 
                     <div class="mt-10 grid gap-5 md:grid-cols-2">
-    <article
-        v-for="item in problemItems"
-        :key="item.title"
-        class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
-    >
-        <div
-            class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
-            :style="{ background: primary }"
-            aria-hidden="true"
-        />
-        <div
-            class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
-            aria-hidden="true"
-        />
+                        <article
+                            v-for="item in problemItems"
+                            :key="item.title"
+                            class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
+                        >
+                            <div
+                                class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem] transition duration-300 group-hover:w-1.5"
+                                :style="{ background: primary }"
+                                aria-hidden="true"
+                            />
+                            <div
+                                class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                aria-hidden="true"
+                            />
 
-        <div class="relative flex items-start gap-4">
-            <div
-                class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
-            >
-                <FontAwesomeIcon
-                    :icon="item.icon"
-                    class="text-base"
-                />
-            </div>
+                            <div class="relative flex items-start gap-4">
+                                <div
+                                    class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-white/85 transition duration-300 group-hover:border-white/20 group-hover:bg-white/[0.1] group-hover:text-white"
+                                >
+                                    <FontAwesomeIcon
+                                        :icon="item.icon"
+                                        class="text-base"
+                                    />
+                                </div>
 
-            <div>
-                <h3 class="text-base font-semibold text-white">
-                    {{ item.title }}
-                </h3>
-                <p class="mt-2 text-sm leading-7 text-white/78">
-                    {{ item.text }}
-                </p>
-            </div>
-        </div>
-    </article>
-</div>
+                                <div>
+                                    <h3 class="text-base font-semibold text-white">
+                                        {{ item.title }}
+                                    </h3>
+                                    <p class="mt-2 text-sm leading-7 text-white/78">
+                                        {{ item.text }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
 
@@ -742,8 +737,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         <p
                             class="mt-4 text-lg leading-relaxed text-white/80"
                         >
-                            Clear scope, steady communication, and work that’s
-                            designed to be useful long after launch.
+                            Clear scope, steady communication, and software work that is designed to stay useful long after launch.
                         </p>
                     </div>
 
@@ -752,12 +746,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             v-for="(step, index) in processSteps"
                             :key="step.title"
                             class="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-6 backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-2xl hover:shadow-black/20"
-                            :class="{
-                                'xl:mt-0': index === 0,
-                                'xl:mt-6': index === 1,
-                                'xl:mt-12': index === 2,
-                                'xl:mt-6': index === 3,
-                            }"
                         >
                             <div
                                 class="absolute inset-y-0 left-0 w-1 rounded-l-[1.75rem]"
@@ -851,31 +839,20 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="about-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Senior full stack engineer with a practical,
-                            product-minded approach
+                            Senior full stack engineer with a practical, product-minded approach
                         </h2>
 
                         <div class="mt-6 space-y-4 text-white/80">
                             <p class="leading-relaxed">
-                                I enjoy building software that is simple,
-                                reliable, and useful for the people who depend
-                                on it. My background is in full stack
-                                development across Laravel, Vue, React,
-                                TypeScript, APIs, and AWS.
+                                I enjoy building software that is simple, reliable, and genuinely useful for the people who depend on it every day. My background includes full stack development across Laravel, Vue, React, TypeScript, APIs, and AWS.
                             </p>
 
                             <p class="leading-relaxed">
-                                I work best with teams and businesses that value
-                                clear thinking, clean execution, direct
-                                communication, and solutions that actually
-                                support day-to-day operations.
+                                I work best with startups, small teams, and businesses that value clear thinking, direct communication, clean execution, and software that supports real operations instead of getting in the way.
                             </p>
 
                             <p class="leading-relaxed">
-                                Whether the project is a custom application, an
-                                API, an internal tool, or a business website, my
-                                goal is always the same: build something solid,
-                                understandable, and worth maintaining.
+                                Whether the project is a custom web application, a Laravel API, an internal dashboard, a software integration, or a modern business website, my goal is always the same: build something solid, understandable, and worth maintaining.
                             </p>
                         </div>
                     </div>
@@ -954,10 +931,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
-                            I focus on dependable, widely used tools that make
-                            it easier to build clean products, maintain them
-                            over time, and move quickly without unnecessary
-                            complexity.
+                            I focus on dependable, widely used tools that make it easier to build clean products, maintain them over time, and move quickly without unnecessary complexity.
                         </p>
                     </div>
 
@@ -1059,10 +1033,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-4 max-w-xl text-lg leading-relaxed text-white/80"
                                     >
-                                        Whether you need a custom app, API work,
-                                        improvements to an existing product, or
-                                        a better business website, send me a
-                                        note and I’ll get back to you.
+                                        Whether you need a custom web application, Laravel API work, improvements to an existing product, internal tooling, integrations, or a better business website, send me a note and I’ll get back to you.
                                     </p>
 
                                     <div
@@ -1198,9 +1169,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             id="message-help"
                                             class="mt-2 text-sm text-white/65"
                                         >
-                                            A short summary is perfect. Include
-                                            goals, timing, and anything already
-                                            in place.
+                                            A short summary is perfect. Include goals, timing, tech stack if relevant, and anything already in place.
                                         </p>
                                         <InputError
                                             :message="errors.message"
@@ -1250,6 +1219,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
 
                                         <p
                                             v-if="flashSuccess"
+                                            aria-live="polite"
                                             class="mt-3 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200"
                                         >
                                             {{ flashSuccess }}
@@ -1257,6 +1227,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
 
                                         <p
                                             v-if="flashError"
+                                            aria-live="assertive"
                                             class="mt-3 rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200"
                                         >
                                             {{ flashError }}
