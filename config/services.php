@@ -35,7 +35,8 @@ return [
         ],
     ],
     'discord' => [
-        'webhook_url' => env('DISCORD_WEBHOOK_CONTACT_URL'),
+        'webhook_contact_form_url' => env('DISCORD_WEBHOOK_CONTACT_URL'),
+        'webhook_contact_form_error_url' => env('DISCORD_WEBHOOK_CONTACT_ERROR_URL'),
     ],
 
 ];

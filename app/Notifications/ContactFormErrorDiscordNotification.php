@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
 
-class ContactFormDiscordNotification extends Notification
+class ContactFormErrorDiscordNotification extends Notification
 {
     use Queueable;
 
@@ -14,7 +14,7 @@ class ContactFormDiscordNotification extends Notification
         protected string $name,
         protected string $email,
         protected string $phone,
-        protected string $message,
+        protected string $error_message
     ) {}
 
     public function via(object $notifiable): array
@@ -31,7 +31,7 @@ class ContactFormDiscordNotification extends Notification
             . "**Name:** {$this->name}\n"
             . "**Email:** {$this->email}\n"
             . "**Phone:** " . ($this->phone ?: 'N/A') . "\n"
-            . "**Message:** {$this->message}";
+            . "**Error Message:** {$this->error_message}";
 
         // Discord hard limit: 2000 chars for content.
         // If you include lots of URLs, you can exceed it quickly.
@@ -41,7 +41,7 @@ class ContactFormDiscordNotification extends Notification
             'content' => $content,
         ];
 
-        Http::post(config('services.discord.webhook_contact_form_url'), $payload);
+        Http::post(config('services.discord.webhook_contact_form_error_url'), $payload);
     }
 
     private function truncateDiscordContent(string $content, int $max): string

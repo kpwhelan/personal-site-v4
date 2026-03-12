@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
 use App\Notifications\ContactFormDiscordNotification;
+use App\Notifications\ContactFormErrorDiscordNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -25,12 +26,18 @@ class ContactMessagesController extends Controller
             $message->email = $validated['email'];
             $message->phone = $validated['phone'] ?? '';
             $message->message = $validated['message'];
-            $message->photo_paths = []; // or null, depending on your column type
             $message->save();
         } catch (\Throwable $e) {
             Log::error('Contact form save failed', [
                 'error' => $e->getMessage(),
             ]);
+
+            (new ContactFormErrorDiscordNotification(
+                $message->name,
+                $message->email,
+                $message->phone,
+                $e->getMessage()
+            ))->toDiscord(null);
 
             return back()->withErrors([
                 'form' => 'Uh oh, something went wrong on our end. Please email me directly at kevin@kevinwhelandev.com.',
