@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3';
+import { Form, Head } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
+import InputError from '@/components/InputError.vue';
 import heroPhoto from '@/assets/me.png';
 
 const siteUrl = 'https://kevinwhelandev.com';
@@ -423,7 +424,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         <div
                             class="relative mx-auto max-w-lg md:mr-0 md:ml-auto"
                         >
-                            <!-- subtle glow behind portrait -->
                             <div
                                 class="pointer-events-none absolute -inset-6 rounded-[2.5rem] opacity-40 blur-2xl"
                                 :style="{
@@ -447,7 +447,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     />
                                 </div>
 
-                                <!-- lighter gradient -->
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-black/18 via-black/4 to-transparent"
                                     aria-hidden="true"
@@ -458,7 +457,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     aria-hidden="true"
                                 />
 
-                                <!-- glass info panel -->
                                 <div
                                     class="absolute inset-x-4 bottom-4 sm:inset-x-5 sm:bottom-5"
                                 >
@@ -910,19 +908,21 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             <div
                                 class="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-black/20"
                             >
-                                <form
-                                    class="grid gap-4"
-                                    method="post"
+                                <Form
                                     action="/contact"
-                                    novalidate
+                                    method="post"
+                                    reset-on-success
+                                    v-slot="{ errors, processing, wasSuccessful }"
+                                    class="grid gap-4"
                                 >
                                     <div class="grid gap-4 sm:grid-cols-2">
                                         <div>
                                             <label
                                                 class="mb-2 block text-sm text-white/85"
                                                 for="name"
-                                                >Name</label
                                             >
+                                                Name
+                                            </label>
                                             <input
                                                 id="name"
                                                 name="name"
@@ -932,14 +932,19 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                                 class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white transition outline-none placeholder:text-white/45 focus:border-white/25 focus:bg-black/40 focus-visible:ring-2 focus-visible:ring-white/70"
                                                 placeholder="Your name"
                                             />
+                                            <InputError
+                                                :message="errors.name"
+                                                class="mt-2"
+                                            />
                                         </div>
 
                                         <div>
                                             <label
                                                 class="mb-2 block text-sm text-white/85"
                                                 for="email"
-                                                >Email</label
                                             >
+                                                Email
+                                            </label>
                                             <input
                                                 id="email"
                                                 name="email"
@@ -949,6 +954,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                                 required
                                                 class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white transition outline-none placeholder:text-white/45 focus:border-white/25 focus:bg-black/40 focus-visible:ring-2 focus-visible:ring-white/70"
                                                 placeholder="you@example.com"
+                                            />
+                                            <InputError
+                                                :message="errors.email"
+                                                class="mt-2"
                                             />
                                         </div>
                                     </div>
@@ -971,6 +980,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white transition outline-none placeholder:text-white/45 focus:border-white/25 focus:bg-black/40 focus-visible:ring-2 focus-visible:ring-white/70"
                                             placeholder="Company or team name"
                                         />
+                                        <InputError
+                                            :message="errors.company"
+                                            class="mt-2"
+                                        />
                                     </div>
 
                                     <div>
@@ -988,7 +1001,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             aria-describedby="message-help"
                                             class="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white transition outline-none placeholder:text-white/45 focus:border-white/25 focus:bg-black/40 focus-visible:ring-2 focus-visible:ring-white/70"
                                             placeholder="A few details about the project, what you need help with, and any timeline you have in mind."
-                                        />
+                                        ></textarea>
                                         <p
                                             id="message-help"
                                             class="mt-2 text-sm text-white/65"
@@ -997,18 +1010,56 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             goals, timing, and anything already
                                             in place.
                                         </p>
+                                        <InputError
+                                            :message="errors.message"
+                                            class="mt-2"
+                                        />
                                     </div>
 
                                     <div class="pt-2">
                                         <button
                                             type="submit"
-                                            class="rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none"
+                                            :disabled="processing"
+                                            class="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09111c] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70"
                                             :style="{ background: primary }"
                                         >
-                                            Send message
+                                            <svg
+                                                v-if="processing"
+                                                class="mr-2 h-4 w-4 animate-spin"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                aria-hidden="true"
+                                            >
+                                                <circle
+                                                    class="opacity-25"
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="10"
+                                                    stroke="currentColor"
+                                                    stroke-width="4"
+                                                />
+                                                <path
+                                                    class="opacity-90"
+                                                    fill="currentColor"
+                                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                                />
+                                            </svg>
+                                            {{
+                                                processing
+                                                    ? 'Sending...'
+                                                    : 'Send message'
+                                            }}
                                         </button>
+
+                                        <p
+                                            v-if="wasSuccessful"
+                                            class="mt-3 text-sm text-emerald-300"
+                                        >
+                                            Thanks — your message was sent
+                                            successfully.
+                                        </p>
                                     </div>
-                                </form>
+                                </Form>
                             </div>
                         </div>
                     </div>
