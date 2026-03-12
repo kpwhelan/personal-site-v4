@@ -11,8 +11,6 @@ class ContactMessagesController extends Controller
 {
     public function post(Request $request)
     {
-
-    dd("hey friends!");
         $validated = $request->validate([
             'name'    => ['required', 'string', 'max:255'],
             'email'   => ['required', 'email', 'max:255'],
@@ -33,6 +31,8 @@ class ContactMessagesController extends Controller
             Log::error('Contact form save failed', [
                 'error' => $e->getMessage(),
             ]);
+
+
 
             return response()->json([
                 'error' => 'Uh oh, something went wrong on our end - please give us a call at 978-877-9784',
