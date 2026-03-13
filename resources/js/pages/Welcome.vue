@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Form, Head, usePage } from '@inertiajs/vue3';
-import { computed, ref } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faCode,
     faGlobe,
@@ -19,8 +16,11 @@ import {
     faServer,
     faPalette,
 } from '@fortawesome/free-solid-svg-icons';
-import InputError from '@/components/InputError.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { Form, Head, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
 import heroPhoto from '@/assets/me.png';
+import InputError from '@/components/InputError.vue';
 
 const siteUrl = 'https://kevinwhelandev.com';
 const siteName = 'Kevin Whelan';
