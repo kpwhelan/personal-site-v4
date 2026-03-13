@@ -18,8 +18,6 @@ import {
     faShieldHalved,
     faServer,
     faPalette,
-    faBars,
-    faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import InputError from '@/components/InputError.vue';
 import heroPhoto from '@/assets/me.png';
@@ -47,7 +45,7 @@ const techGroups = [
         items: [
             'Laravel',
             'PHP',
-            'Node / Express / Nest',
+            'Node / Nest',
             'MySQL',
             'PostgreSQL',
             'REST APIs',
@@ -318,11 +316,11 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-hidden="true"
             />
 
-            <div class="relative mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 md:py-8">
+            <div class="relative mx-auto max-w-7xl px-6 py-6 md:py-8">
                 <div class="flex items-center justify-between">
                     <a
                         href="/"
-                        class="rounded text-sm font-semibold tracking-tight text-white sm:text-base focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
+                        class="rounded font-semibold tracking-tight text-white focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
                         aria-label="Kevin Whelan home"
                     >
                         Kevin Whelan
@@ -352,16 +350,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
 
                     <button
                         type="button"
-                        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none md:hidden"
+                        class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none md:hidden"
                         :aria-expanded="mobileMenuOpen ? 'true' : 'false'"
                         aria-controls="mobile-navigation"
-                        :aria-label="mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+                        aria-label="Toggle navigation menu"
                         @click="mobileMenuOpen = !mobileMenuOpen"
                     >
-                        <FontAwesomeIcon
-                            :icon="mobileMenuOpen ? faXmark : faBars"
-                            class="text-lg"
-                        />
+                        <span>{{ mobileMenuOpen ? 'Close' : 'Menu' }}</span>
                     </button>
                 </div>
 
@@ -369,13 +364,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                     v-if="mobileMenuOpen"
                     id="mobile-navigation"
                     aria-label="Mobile"
-                    class="mt-4 rounded-2xl border border-white/10 bg-[#0d1726]/95 p-3 shadow-2xl backdrop-blur md:hidden"
+                    class="mt-4 rounded-2xl border border-white/10 bg-white/[0.06] p-3 backdrop-blur md:hidden"
                 >
                     <ul class="space-y-1">
                         <li v-for="item in nav" :key="item.href">
                             <a
                                 :href="item.href"
-                                class="block rounded-lg px-3 py-3 text-sm text-white/90 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
+                                class="block rounded-lg px-3 py-2 text-sm text-white/90 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
                                 @click="mobileMenuOpen = false"
                             >
                                 {{ item.label }}
@@ -384,7 +379,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         <li>
                             <a
                                 href="#contact"
-                                class="mt-2 block rounded-lg bg-white/10 px-3 py-3 text-sm font-medium text-white transition hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
+                                class="mt-2 block rounded-lg px-3 py-2 text-sm font-medium text-white transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:outline-none"
                                 @click="mobileMenuOpen = false"
                             >
                                 Get in touch
@@ -394,48 +389,59 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 </nav>
 
                 <section
-                    class="mt-8 grid items-start gap-8 sm:mt-10 md:mt-12 md:grid-cols-12 md:gap-10 lg:gap-14"
+                    class="mt-12 grid items-start gap-10 md:grid-cols-12 lg:gap-14"
                     aria-labelledby="home-hero-title"
                 >
-                    <div class="order-1 md:col-span-7">
+                    <div class="order-2 md:order-1 md:col-span-7">
                         <div class="max-w-3xl">
                             <p
-                                class="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-3 py-2 text-xs font-medium text-white/95 shadow-sm backdrop-blur sm:px-4 sm:text-sm"
+                                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-4 py-2 text-sm font-medium text-white/95 shadow-sm backdrop-blur"
                             >
                                 <span
                                     class="h-2.5 w-2.5 rounded-full"
                                     :style="{ background: primary }"
                                     aria-hidden="true"
                                 />
-                                Freelance Senior Full Stack Engineer • Laravel • Vue • React • APIs • AWS
+                                Freelance Senior Full Stack Engineer • Laravel •
+                                Vue • React • APIs • AWS
                             </p>
 
                             <h1
                                 id="home-hero-title"
-                                class="mt-5 max-w-5xl text-3xl font-semibold tracking-tight text-white sm:mt-6 sm:text-5xl lg:text-[4.2rem] lg:leading-[0.98]"
+                                class="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]"
                             >
-                                Custom software, APIs, and modern business websites
-                                <span class="mt-2 block text-white/72">
-                                    Built by a senior engineer who works directly with you
+                                Custom software, APIs, and modern business
+                                websites
+                                <span class="block text-white/72">
+                                    Built by a senior engineer who works
+                                    directly with you
                                 </span>
                             </h1>
 
                             <p
-                                class="mt-5 max-w-3xl text-base leading-7 text-white/88 sm:mt-7 sm:text-xl sm:leading-8"
+                                class="mt-7 max-w-3xl text-xl leading-8 text-white/88 sm:text-[1.35rem]"
                             >
-                                I help startups, small teams, and businesses build custom web applications, Laravel APIs, internal tools, software integrations, and modern websites that are clear, maintainable, and grounded in real business needs.
+                                I help startups, small teams, and businesses
+                                build custom web applications, Laravel APIs,
+                                internal tools, software integrations, and
+                                modern websites that are clear, maintainable,
+                                and grounded in real business needs.
                             </p>
 
                             <p
-                                class="mt-4 max-w-3xl text-sm leading-7 text-white/72 sm:text-lg"
+                                class="mt-4 max-w-3xl text-base leading-7 text-white/72 sm:text-lg"
                             >
-                                Best fit for teams that need a freelance Laravel developer, full stack engineer, or technical partner who can design, build, improve, and ship practical software without unnecessary complexity.
+                                Best fit for teams that need a freelance Laravel
+                                developer, full stack engineer, or technical
+                                partner who can design, build, improve, and ship
+                                practical software without unnecessary
+                                complexity.
                             </p>
 
-                            <div class="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
+                            <div class="mt-9 flex flex-wrap gap-3">
                                 <a
                                     href="#contact"
-                                    class="w-full rounded-xl px-6 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-black/20 transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none sm:w-auto"
+                                    class="rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
                                     :style="{
                                         background: hoveringPrimary
                                             ? primaryHover
@@ -449,13 +455,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
 
                                 <a
                                     href="#services"
-                                    class="w-full rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-center text-sm font-semibold text-white/95 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none sm:w-auto"
+                                    class="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white/95 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
                                 >
                                     View services
                                 </a>
                             </div>
 
-                            <div class="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-3">
+                            <div class="mt-10 grid gap-4 sm:grid-cols-3">
                                 <div
                                     class="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
                                 >
@@ -465,7 +471,8 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-2 text-sm leading-relaxed font-medium text-white/92"
                                     >
-                                        Custom apps, internal tools, APIs, and business websites
+                                        Custom apps, internal tools, APIs, and
+                                        business websites
                                     </p>
                                 </div>
 
@@ -478,7 +485,8 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-2 text-sm leading-relaxed font-medium text-white/92"
                                     >
-                                        Clear communication, thoughtful execution, low friction
+                                        Clear communication, thoughtful
+                                        execution, low friction
                                     </p>
                                 </div>
 
@@ -498,12 +506,12 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </div>
                     </div>
 
-                    <div class="order-2 md:col-span-5">
+                    <div class="order-1 md:order-2 md:col-span-5">
                         <div
-                            class="relative mx-auto mt-2 max-w-[18rem] sm:max-w-sm md:mt-0 md:max-w-lg md:mr-0 md:ml-auto"
+                            class="relative mx-auto max-w-lg md:mr-0 md:ml-auto"
                         >
                             <div
-                                class="pointer-events-none absolute -inset-4 sm:-inset-6 rounded-[2.5rem] opacity-40 blur-2xl"
+                                class="pointer-events-none absolute -inset-6 rounded-[2.5rem] opacity-40 blur-2xl"
                                 :style="{
                                     background:
                                         'radial-gradient(circle at 30% 30%, rgba(59,130,246,.35), transparent 70%)',
@@ -512,13 +520,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             />
 
                             <div
-                                class="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/20"
+                                class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/20"
                             >
-                                <div class="aspect-[4/5] w-full sm:aspect-[2/3]">
+                                <div class="aspect-[2/3] w-full">
                                     <img
                                         :src="heroPhoto"
                                         alt="Kevin Whelan, freelance senior full stack engineer"
-                                        class="h-full w-full object-cover object-top brightness-[1.08] contrast-[1.04] saturate-[1.02] md:object-center"
+                                        class="h-full w-full object-cover object-center brightness-[1.08] contrast-[1.04] saturate-[1.02]"
                                         loading="eager"
                                         fetchpriority="high"
                                         decoding="async"
@@ -531,18 +539,18 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 />
 
                                 <div
-                                    class="pointer-events-none absolute inset-0 rounded-[1.75rem] sm:rounded-[2rem] ring-1 ring-white/10"
+                                    class="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-white/10"
                                     aria-hidden="true"
                                 />
 
                                 <div
-                                    class="absolute inset-x-3 bottom-3 sm:inset-x-5 sm:bottom-5"
+                                    class="absolute inset-x-4 bottom-4 sm:inset-x-5 sm:bottom-5"
                                 >
                                     <div
-                                        class="rounded-2xl border border-white/15 bg-white/10 p-3 shadow-lg shadow-black/20 backdrop-blur-md sm:p-4"
+                                        class="rounded-2xl border border-white/15 bg-white/10 p-4 shadow-lg shadow-black/20 backdrop-blur-md"
                                     >
                                         <p
-                                            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-white/95 sm:text-sm"
+                                            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm text-white/95"
                                         >
                                             <span
                                                 class="h-2 w-2 rounded-full"
@@ -553,12 +561,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                         </p>
 
                                         <p
-                                            class="mt-3 text-sm leading-snug font-semibold text-white sm:text-lg"
+                                            class="mt-3 text-base leading-snug font-semibold text-white sm:text-lg"
                                         >
-                                            Thoughtful builds for products, platforms, and growing businesses
+                                            Thoughtful builds for products,
+                                            platforms, and growing businesses
                                         </p>
 
-                                        <p class="mt-1 text-xs text-white/85 sm:text-sm">
+                                        <p class="mt-1 text-sm text-white/85">
                                             Startups • small teams • businesses
                                         </p>
                                     </div>
@@ -576,7 +585,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="services-title"
                 class="border-t border-white/5 bg-[#0A1320]"
             >
-                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="max-w-3xl">
                         <p
                             class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
@@ -593,13 +602,15 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="services-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Practical software and website work for real business needs
+                            Practical software and website work for real
+                            business needs
                         </h2>
 
-                        <p
-                            class="mt-4 text-lg leading-relaxed text-white/80"
-                        >
-                            I help clients plan, build, improve, and modernize custom software, web applications, APIs, internal tools, and business websites with a focus on clear execution, maintainable code, and useful outcomes.
+                        <p class="mt-4 text-lg leading-relaxed text-white/80">
+                            I help clients plan, build, improve, and modernize
+                            custom software, web applications, APIs, internal
+                            tools, and business websites with a focus on clear
+                            execution, maintainable code, and useful outcomes.
                         </p>
                     </div>
 
@@ -615,7 +626,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 aria-hidden="true"
                             />
                             <div
-                                class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                class="pointer-events-none absolute -top-16 -right-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
                                 aria-hidden="true"
                             />
 
@@ -634,9 +645,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 >
                                     {{ card.title }}
                                 </h3>
-                                <p
-                                    class="mt-3 text-sm leading-7 text-white/78"
-                                >
+                                <p class="mt-3 text-sm leading-7 text-white/78">
                                     {{ card.text }}
                                 </p>
                             </div>
@@ -650,7 +659,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="problems-title"
                 class="border-t border-white/5 bg-[#09111c]"
             >
-                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="max-w-3xl">
                         <p
                             class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
@@ -671,7 +680,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
-                            Most clients come to me because something important needs to be built, fixed, improved, modernized, or made easier to maintain. These are the kinds of software and website problems I commonly help solve.
+                            Most clients come to me because something important
+                            needs to be built, fixed, improved, modernized, or
+                            made easier to maintain. These are the kinds of
+                            software and website problems I commonly help solve.
                         </p>
                     </div>
 
@@ -687,7 +699,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 aria-hidden="true"
                             />
                             <div
-                                class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                class="pointer-events-none absolute -top-16 -right-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
                                 aria-hidden="true"
                             />
 
@@ -702,10 +714,14 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 </div>
 
                                 <div>
-                                    <h3 class="text-base font-semibold text-white">
+                                    <h3
+                                        class="text-base font-semibold text-white"
+                                    >
                                         {{ item.title }}
                                     </h3>
-                                    <p class="mt-2 text-sm leading-7 text-white/78">
+                                    <p
+                                        class="mt-2 text-sm leading-7 text-white/78"
+                                    >
                                         {{ item.text }}
                                     </p>
                                 </div>
@@ -719,7 +735,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="process-title"
                 class="border-t border-white/5 bg-[#0A1320]"
             >
-                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="max-w-3xl">
                         <p
                             class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
@@ -739,10 +755,9 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             How I Work
                         </h2>
 
-                        <p
-                            class="mt-4 text-lg leading-relaxed text-white/80"
-                        >
-                            Clear scope, steady communication, and software work that is designed to stay useful long after launch.
+                        <p class="mt-4 text-lg leading-relaxed text-white/80">
+                            Clear scope, steady communication, and software work
+                            that is designed to stay useful long after launch.
                         </p>
                     </div>
 
@@ -758,7 +773,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 aria-hidden="true"
                             />
                             <div
-                                class="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                class="pointer-events-none absolute -top-14 -right-14 h-28 w-28 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
                                 aria-hidden="true"
                             />
 
@@ -785,9 +800,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 >
                                     {{ step.title }}
                                 </h3>
-                                <p
-                                    class="mt-3 text-sm leading-7 text-white/78"
-                                >
+                                <p class="mt-3 text-sm leading-7 text-white/78">
                                     {{ step.text }}
                                 </p>
                             </div>
@@ -826,7 +839,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 class="border-t border-white/5 bg-[#09111c]"
             >
                 <div
-                    class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 md:grid-cols-12 md:items-start"
+                    class="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-12 md:items-start"
                 >
                     <div class="md:col-span-7">
                         <p
@@ -844,20 +857,33 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             id="about-title"
                             class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                         >
-                            Senior full stack engineer with a practical, product-minded approach
+                            Senior full stack engineer with a practical,
+                            product-minded approach
                         </h2>
 
                         <div class="mt-6 space-y-4 text-white/80">
                             <p class="leading-relaxed">
-                                I enjoy building software that is simple, reliable, and genuinely useful for the people who depend on it every day. My background includes full stack development across Laravel, Vue, React, TypeScript, APIs, and AWS.
+                                I enjoy building software that is simple,
+                                reliable, and genuinely useful for the people
+                                who depend on it every day. My background
+                                includes full stack development across Laravel,
+                                Vue, React, TypeScript, APIs, and AWS.
                             </p>
 
                             <p class="leading-relaxed">
-                                I work best with startups, small teams, and businesses that value clear thinking, direct communication, clean execution, and software that supports real operations instead of getting in the way.
+                                I work best with startups, small teams, and
+                                businesses that value clear thinking, direct
+                                communication, clean execution, and software
+                                that supports real operations instead of getting
+                                in the way.
                             </p>
 
                             <p class="leading-relaxed">
-                                Whether the project is a custom web application, a Laravel API, an internal dashboard, a software integration, or a modern business website, my goal is always the same: build something solid, understandable, and worth maintaining.
+                                Whether the project is a custom web application,
+                                a Laravel API, an internal dashboard, a software
+                                integration, or a modern business website, my
+                                goal is always the same: build something solid,
+                                understandable, and worth maintaining.
                             </p>
                         </div>
                     </div>
@@ -899,7 +925,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             {{ stat.label }}
                                         </dt>
                                         <dd
-                                            class="mt-1 text-sm font-medium leading-relaxed text-white/92"
+                                            class="mt-1 text-sm leading-relaxed font-medium text-white/92"
                                         >
                                             {{ stat.value }}
                                         </dd>
@@ -915,7 +941,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="tech-title"
                 class="border-t border-white/5 bg-[#0A1320]"
             >
-                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="max-w-3xl">
                         <p
                             class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/85"
@@ -936,7 +962,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                         </h2>
 
                         <p class="mt-4 text-lg leading-relaxed text-white/80">
-                            I focus on dependable, widely used tools that make it easier to build clean products, maintain them over time, and move quickly without unnecessary complexity.
+                            I focus on dependable, widely used tools that make
+                            it easier to build clean products, maintain them
+                            over time, and move quickly without unnecessary
+                            complexity.
                         </p>
                     </div>
 
@@ -953,7 +982,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 aria-hidden="true"
                             />
                             <div
-                                class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
+                                class="pointer-events-none absolute -top-16 -right-16 h-32 w-32 rounded-full bg-white/[0.03] blur-2xl transition duration-300 group-hover:bg-white/[0.05]"
                                 aria-hidden="true"
                             />
 
@@ -978,10 +1007,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     class="mt-5 flex flex-wrap gap-2"
                                     role="list"
                                 >
-                                    <li
-                                        v-for="item in group.items"
-                                        :key="item"
-                                    >
+                                    <li v-for="item in group.items" :key="item">
                                         <span
                                             class="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-sm text-white/85 transition duration-300 hover:border-white/20 hover:bg-black/30"
                                         >
@@ -1000,7 +1026,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 aria-labelledby="contact-title"
                 class="border-t border-white/5 bg-[#09111c]"
             >
-                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                <div class="mx-auto max-w-6xl px-6 py-20">
                     <div class="grid gap-10 md:grid-cols-12">
                         <div class="md:col-span-5">
                             <div
@@ -1012,7 +1038,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     aria-hidden="true"
                                 />
                                 <div
-                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
+                                    class="pointer-events-none absolute -top-16 -right-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
                                     aria-hidden="true"
                                 />
 
@@ -1038,7 +1064,12 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     <p
                                         class="mt-4 max-w-xl text-lg leading-relaxed text-white/80"
                                     >
-                                        Whether you need a custom web application, Laravel API work, improvements to an existing product, internal tooling, integrations, or a better business website, send me a note and I’ll get back to you.
+                                        Whether you need a custom web
+                                        application, Laravel API work,
+                                        improvements to an existing product,
+                                        internal tooling, integrations, or a
+                                        better business website, send me a note
+                                        and I’ll get back to you.
                                     </p>
 
                                     <div
@@ -1071,7 +1102,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     aria-hidden="true"
                                 />
                                 <div
-                                    class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
+                                    class="pointer-events-none absolute -top-16 -right-16 h-36 w-36 rounded-full bg-white/[0.03] blur-2xl"
                                     aria-hidden="true"
                                 />
 
@@ -1174,7 +1205,10 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                             id="message-help"
                                             class="mt-2 text-sm text-white/65"
                                         >
-                                            A short summary is perfect. Include goals, timing, tech stack if relevant, and anything already in place.
+                                            A short summary is perfect. Include
+                                            goals, timing, tech stack if
+                                            relevant, and anything already in
+                                            place.
                                         </p>
                                         <InputError
                                             :message="errors.message"
@@ -1247,7 +1281,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
         </main>
 
         <footer class="border-t border-white/5 bg-[#08111d]">
-            <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-white/65 sm:px-6">
+            <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-white/65">
                 <p>
                     © {{ new Date().getFullYear() }} Kevin Whelan. All rights
                     reserved.
