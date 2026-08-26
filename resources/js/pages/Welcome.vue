@@ -233,6 +233,7 @@ const structuredData = computed(() => ({
         {
             '@type': 'CreativeWork',
             name: 'Saydee',
+            url: 'https://getsaydee.com',
             creator: {
                 '@type': 'Person',
                 name: 'Kevin Whelan',
@@ -664,16 +665,20 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                             </ul>
                             <div class="mt-8 flex flex-wrap items-center gap-4">
                                 <a
-                                    href="#contact"
+                                    href="https://getsaydee.com"
+                                    target="_blank"
+                                    rel="noreferrer"
                                     class="inline-flex items-center gap-2 rounded-xl bg-[#171d26] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2a3340] focus-visible:ring-2 focus-visible:ring-[#171d26] focus-visible:ring-offset-2 focus-visible:outline-none"
                                 >
-                                    Ask me about Saydee
+                                    Visit Saydee
                                     <FontAwesomeIcon :icon="faArrowRight" />
                                 </a>
-                                <p class="text-sm text-[#6b737c]">
-                                    Happy to walk through the product and
-                                    technical decisions.
-                                </p>
+                                <a
+                                    href="#contact"
+                                    class="text-sm font-medium text-[#56606b] underline decoration-[#56606b]/30 underline-offset-4 transition hover:text-[#171d26]"
+                                >
+                                    Ask me about the build
+                                </a>
                             </div>
                         </div>
                     </div>
