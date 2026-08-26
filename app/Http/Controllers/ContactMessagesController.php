@@ -16,6 +16,7 @@ class ContactMessagesController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:20'],
             'message' => ['required', 'string', 'max:5000'],
         ]);
@@ -25,7 +26,9 @@ class ContactMessagesController extends Controller
             $message->name = $validated['name'];
             $message->email = $validated['email'];
             $message->phone = $validated['phone'] ?? '';
-            $message->message = $validated['message'];
+            $message->message = isset($validated['company']) && $validated['company'] !== ''
+                ? "Company: {$validated['company']}\n\n{$validated['message']}"
+                : $validated['message'];
             $message->save();
         } catch (\Throwable $e) {
             Log::error('Contact form save failed', [

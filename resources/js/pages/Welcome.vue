@@ -15,6 +15,9 @@ import {
     faShieldHalved,
     faServer,
     faPalette,
+    faArrowRight,
+    faCheck,
+    faQuoteLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Form, Head, usePage } from '@inertiajs/vue3';
@@ -32,10 +35,17 @@ const contactEmail = 'kevin@kevinwhelandev.com';
 const pageImage = `${siteUrl}/images/og-home.jpg`;
 
 const nav = [
-    { label: 'What I Do', href: '#services' },
-    { label: 'Problems I Solve', href: '#problems' },
+    { label: 'Saydee', href: '#saydee' },
+    { label: 'Services', href: '#services' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
+];
+
+const saydeeHighlights = [
+    'Product strategy translated into a focused, usable experience',
+    'Full-stack architecture built for iteration and maintainability',
+    'Thoughtful UX decisions across the complete customer journey',
+    'End-to-end ownership from idea and scope through delivery',
 ];
 
 const techGroups = [
@@ -187,13 +197,13 @@ const mobileMenuOpen = ref(false);
 
 const page = usePage();
 
-const flashSuccess = computed(
-    () => page.props.flash?.success as string | undefined,
+const flash = computed(
+    () => page.props.flash as { success?: string; error?: string } | undefined,
 );
 
-const flashError = computed(
-    () => page.props.flash?.error as string | undefined,
-);
+const flashSuccess = computed(() => flash.value?.success);
+
+const flashError = computed(() => flash.value?.error);
 
 const structuredData = computed(() => ({
     '@context': 'https://schema.org',
@@ -218,6 +228,17 @@ const structuredData = computed(() => ({
                 'Internal Tools',
                 'Web Application Development',
             ],
+            sameAs: ['https://www.linkedin.com/in/kpwhelan'],
+        },
+        {
+            '@type': 'CreativeWork',
+            name: 'Saydee',
+            creator: {
+                '@type': 'Person',
+                name: 'Kevin Whelan',
+            },
+            description:
+                'An independent product demonstrating end-to-end product thinking, full-stack engineering, and practical software delivery.',
         },
         {
             '@type': 'WebSite',
@@ -402,40 +423,38 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     :style="{ background: primary }"
                                     aria-hidden="true"
                                 />
-                                Freelance Senior Full Stack Engineer • Laravel •
-                                Vue • React • APIs • AWS
+                                Senior Full Stack Engineer • Product Builder •
+                                Available for work
                             </p>
 
                             <h1
                                 id="home-hero-title"
                                 class="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]"
                             >
-                                Custom software, APIs, and modern business
-                                websites
+                                I turn complex product ideas into
+                                <span :style="{ color: '#8BC6FF' }"
+                                    >software people can rely on.</span
+                                >
                                 <span class="block text-white/72">
-                                    Built by a senior engineer who works
-                                    directly with you
+                                    From first decision to production.
                                 </span>
                             </h1>
 
                             <p
                                 class="mt-7 max-w-3xl text-xl leading-8 text-white/88 sm:text-[1.35rem]"
                             >
-                                I help startups, small teams, and businesses
-                                build custom web applications, Laravel APIs,
-                                internal tools, software integrations, and
-                                modern websites that are clear, maintainable,
-                                and grounded in real business needs.
+                                I’m Kevin, a senior full-stack engineer who
+                                designs, builds, and ships useful products. I
+                                work across backend systems, polished frontend
+                                experiences, infrastructure, and the product
+                                decisions that connect them.
                             </p>
 
                             <p
                                 class="mt-4 max-w-3xl text-base leading-7 text-white/72 sm:text-lg"
                             >
-                                Best fit for teams that need a freelance Laravel
-                                developer, full stack engineer, or technical
-                                partner who can design, build, improve, and ship
-                                practical software without unnecessary
-                                complexity.
+                                Available for full-time roles, contract
+                                engagements, and select freelance projects.
                             </p>
 
                             <div class="mt-9 flex flex-wrap gap-3">
@@ -450,14 +469,14 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     @mouseenter="hoveringPrimary = true"
                                     @mouseleave="hoveringPrimary = false"
                                 >
-                                    Start a conversation
+                                    Work with me
                                 </a>
 
                                 <a
-                                    href="#services"
+                                    href="#saydee"
                                     class="rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white/95 transition hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
                                 >
-                                    View services
+                                    See featured work
                                 </a>
                             </div>
 
@@ -466,13 +485,13 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     class="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
                                 >
                                     <p class="text-sm text-white/65">
-                                        Best fit
+                                        What I bring
                                     </p>
                                     <p
                                         class="mt-2 text-sm leading-relaxed font-medium text-white/92"
                                     >
-                                        Custom apps, internal tools, APIs, and
-                                        business websites
+                                        Product thinking and end-to-end
+                                        engineering ownership
                                     </p>
                                 </div>
 
@@ -580,6 +599,206 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
         </header>
 
         <main id="main-content">
+            <section
+                id="saydee"
+                aria-labelledby="saydee-title"
+                class="relative overflow-hidden border-t border-white/5 bg-[#f1eee8] text-[#151b23]"
+            >
+                <div
+                    class="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#f08a5d]/20 blur-3xl"
+                    aria-hidden="true"
+                />
+                <div class="relative mx-auto max-w-6xl px-6 py-24">
+                    <div
+                        class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+                    >
+                        <div class="max-w-3xl">
+                            <p
+                                class="text-sm font-semibold tracking-[0.18em] text-[#a84f2a] uppercase"
+                            >
+                                Featured product
+                            </p>
+                            <h2
+                                id="saydee-title"
+                                class="mt-4 text-5xl font-semibold tracking-[-0.04em] text-[#151b23] sm:text-6xl"
+                            >
+                                Saydee<span class="text-[#d96d3d]">.</span>
+                            </h2>
+                            <p
+                                class="mt-5 max-w-2xl text-xl leading-8 text-[#49515b]"
+                            >
+                                A product I’m building end to end—and the
+                                clearest example of how I think, make decisions,
+                                and turn an idea into durable software.
+                            </p>
+                        </div>
+                        <span
+                            class="w-fit rounded-full border border-[#151b23]/15 bg-white/55 px-4 py-2 text-sm font-medium text-[#38404a]"
+                            >Independent product work</span
+                        >
+                    </div>
+
+                    <div
+                        class="mt-12 grid overflow-hidden rounded-[2rem] border border-[#151b23]/10 bg-[#171d26] shadow-2xl shadow-[#151b23]/15 lg:grid-cols-12"
+                    >
+                        <div
+                            class="relative flex min-h-[420px] flex-col justify-between overflow-hidden p-8 sm:p-10 lg:col-span-5"
+                        >
+                            <div
+                                class="absolute inset-0 opacity-30"
+                                :style="gridStyle"
+                                aria-hidden="true"
+                            />
+                            <div
+                                class="absolute -bottom-24 -left-20 h-72 w-72 rounded-full bg-[#f08a5d]/30 blur-3xl"
+                                aria-hidden="true"
+                            />
+                            <div class="relative">
+                                <span
+                                    class="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold tracking-wider text-white/70 uppercase"
+                                    >Built with intention</span
+                                >
+                                <p
+                                    class="mt-7 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl"
+                                >
+                                    One product.<br />Every layer.
+                                </p>
+                            </div>
+                            <div
+                                class="relative grid grid-cols-2 gap-3 text-sm"
+                            >
+                                <div
+                                    class="rounded-2xl border border-white/10 bg-white/5 p-4"
+                                >
+                                    <p class="text-white/50">Role</p>
+                                    <p class="mt-1 font-medium text-white">
+                                        Creator & engineer
+                                    </p>
+                                </div>
+                                <div
+                                    class="rounded-2xl border border-white/10 bg-white/5 p-4"
+                                >
+                                    <p class="text-white/50">Scope</p>
+                                    <p class="mt-1 font-medium text-white">
+                                        End-to-end
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 sm:p-10 lg:col-span-7 lg:p-12">
+                            <p class="text-sm font-semibold text-[#a84f2a]">
+                                THE WORK BEHIND THE PRODUCT
+                            </p>
+                            <h3
+                                class="mt-3 text-3xl font-semibold tracking-tight text-[#151b23]"
+                            >
+                                More than a code sample
+                            </h3>
+                            <p class="mt-5 text-base leading-7 text-[#56606b]">
+                                Saydee demonstrates the work that matters after
+                                the initial idea: finding the right scope,
+                                shaping a coherent experience, designing
+                                maintainable systems, and continuing to improve
+                                the product as it becomes real.
+                            </p>
+                            <ul
+                                class="mt-8 grid gap-4 sm:grid-cols-2"
+                                role="list"
+                            >
+                                <li
+                                    v-for="highlight in saydeeHighlights"
+                                    :key="highlight"
+                                    class="flex gap-3 rounded-2xl bg-[#f4f2ee] p-4 text-sm leading-6 text-[#38404a]"
+                                >
+                                    <span
+                                        class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d96d3d] text-[10px] text-white"
+                                        ><FontAwesomeIcon :icon="faCheck"
+                                    /></span>
+                                    {{ highlight }}
+                                </li>
+                            </ul>
+                            <div class="mt-8 flex flex-wrap items-center gap-4">
+                                <a
+                                    href="#contact"
+                                    class="inline-flex items-center gap-2 rounded-xl bg-[#171d26] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2a3340] focus-visible:ring-2 focus-visible:ring-[#171d26] focus-visible:ring-offset-2 focus-visible:outline-none"
+                                >
+                                    Ask me about Saydee
+                                    <FontAwesomeIcon :icon="faArrowRight" />
+                                </a>
+                                <p class="text-sm text-[#6b737c]">
+                                    Happy to walk through the product and
+                                    technical decisions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="proof-title"
+                class="border-t border-white/5 bg-[#08111d]"
+            >
+                <div class="mx-auto max-w-6xl px-6 py-16">
+                    <div
+                        class="grid gap-8 lg:grid-cols-[0.7fr_2fr] lg:items-start"
+                    >
+                        <div>
+                            <p
+                                class="text-sm font-semibold tracking-[0.16em] text-blue-300 uppercase"
+                            >
+                                Trusted teammate
+                            </p>
+                            <h2
+                                id="proof-title"
+                                class="mt-3 text-3xl font-semibold tracking-tight text-white"
+                            >
+                                Engineering with measurable impact
+                            </h2>
+                            <p class="mt-4 text-sm leading-6 text-white/65">
+                                A recommendation from a former engineering
+                                manager at Trader Interactive.
+                            </p>
+                        </div>
+                        <figure
+                            class="relative rounded-[1.75rem] border border-white/10 bg-white/[0.05] p-7 sm:p-9"
+                        >
+                            <FontAwesomeIcon
+                                :icon="faQuoteLeft"
+                                class="absolute top-8 right-8 text-3xl text-blue-400/30"
+                            />
+                            <blockquote
+                                class="max-w-3xl text-lg leading-8 text-white/88"
+                            >
+                                Kevin quickly established himself as a
+                                dependable and thoughtful engineer who
+                                consistently delivered meaningful results. He
+                                contributed to platform initiatives that helped
+                                drive roughly a 20% reduction in OpEx, working
+                                across teams to improve how our services were
+                                built, deployed, and maintained.
+                            </blockquote>
+                            <figcaption
+                                class="mt-6 border-t border-white/10 pt-5 text-sm text-white/65"
+                            >
+                                <span class="font-semibold text-white"
+                                    >Michael Meyer III</span
+                                >
+                                · Former engineering manager, Trader Interactive
+                                <a
+                                    href="https://www.linkedin.com/in/kpwhelan"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    class="ml-2 underline decoration-white/30 underline-offset-4 transition hover:text-white"
+                                    >View recommendation</a
+                                >
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
             <section
                 id="services"
                 aria-labelledby="services-title"
@@ -1058,18 +1277,20 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                         id="contact-title"
                                         class="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
                                     >
-                                        Let’s Talk About Your Project
+                                        Let’s Build Something Useful
                                     </h2>
 
                                     <p
                                         class="mt-4 max-w-xl text-lg leading-relaxed text-white/80"
                                     >
-                                        Whether you need a custom web
-                                        application, Laravel API work,
-                                        improvements to an existing product,
-                                        internal tooling, integrations, or a
-                                        better business website, send me a note
-                                        and I’ll get back to you.
+                                        Hiring for a full-time role, adding an
+                                        experienced contractor, or starting a
+                                        focused project? Whether you need a
+                                        custom web application, Laravel API
+                                        work, improvements to an existing
+                                        product, internal tooling, integrations,
+                                        or a better business website, send me a
+                                        note and I’ll get back to you.
                                     </p>
 
                                     <div
