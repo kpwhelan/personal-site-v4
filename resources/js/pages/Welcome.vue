@@ -410,7 +410,7 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                 </nav>
 
                 <section
-                    class="mt-12 grid items-start gap-10 md:grid-cols-12 lg:gap-14"
+                    class="mt-10 grid items-center gap-10 pb-8 md:grid-cols-12 lg:gap-14"
                     aria-labelledby="home-hero-title"
                 >
                     <div class="order-2 md:order-1 md:col-span-7">
@@ -423,41 +423,28 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                     :style="{ background: primary }"
                                     aria-hidden="true"
                                 />
-                                Senior Full Stack Engineer • Product Builder •
-                                Available for work
+                                Senior full-stack engineer • Available for work
                             </p>
 
                             <h1
                                 id="home-hero-title"
-                                class="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]"
+                                class="mt-6 max-w-3xl text-4xl leading-[1.04] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.65rem]"
                             >
-                                I turn complex product ideas into
+                                I build
                                 <span :style="{ color: '#8BC6FF' }"
                                     >software people can rely on.</span
                                 >
-                                <span class="block text-white/72">
-                                    From first decision to production.
-                                </span>
                             </h1>
 
                             <p
-                                class="mt-7 max-w-3xl text-xl leading-8 text-white/88 sm:text-[1.35rem]"
+                                class="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl"
                             >
-                                I’m Kevin, a senior full-stack engineer who
-                                designs, builds, and ships useful products. I
-                                work across backend systems, polished frontend
-                                experiences, infrastructure, and the product
-                                decisions that connect them.
+                                I design and ship thoughtful full-stack
+                                products—from backend systems and APIs to
+                                polished customer experiences.
                             </p>
 
-                            <p
-                                class="mt-4 max-w-3xl text-base leading-7 text-white/72 sm:text-lg"
-                            >
-                                Available for full-time roles, contract
-                                engagements, and select freelance projects.
-                            </p>
-
-                            <div class="mt-9 flex flex-wrap gap-3">
+                            <div class="mt-7 flex flex-wrap gap-3">
                                 <a
                                     href="#contact"
                                     class="rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111d] focus-visible:outline-none"
@@ -478,49 +465,6 @@ const structuredDataJson = computed(() => JSON.stringify(structuredData.value));
                                 >
                                     See featured work
                                 </a>
-                            </div>
-
-                            <div class="mt-10 grid gap-4 sm:grid-cols-3">
-                                <div
-                                    class="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
-                                >
-                                    <p class="text-sm text-white/65">
-                                        What I bring
-                                    </p>
-                                    <p
-                                        class="mt-2 text-sm leading-relaxed font-medium text-white/92"
-                                    >
-                                        Product thinking and end-to-end
-                                        engineering ownership
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
-                                >
-                                    <p class="text-sm text-white/65">
-                                        Working style
-                                    </p>
-                                    <p
-                                        class="mt-2 text-sm leading-relaxed font-medium text-white/92"
-                                    >
-                                        Clear communication, thoughtful
-                                        execution, low friction
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur"
-                                >
-                                    <p class="text-sm text-white/65">
-                                        Response time
-                                    </p>
-                                    <p
-                                        class="mt-2 text-sm leading-relaxed font-medium text-white/92"
-                                    >
-                                        Within 1 business day
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>
