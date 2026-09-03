@@ -1,7 +1,8 @@
 <?php
 
-test('returns a successful response', function () {
+test('redirects visitors to Project 407', function () {
     $response = $this->get(route('home'));
 
-    $response->assertOk();
+    $response->assertRedirect('https://project-407.com');
+    $response->assertStatus(301);
 });
